@@ -1,0 +1,40 @@
+-- BloxFruit Auto Trial and Auto Kill Script
+
+-- Function to start the trial
+local function startTrial()
+    -- Replace 'TrialCommand' with the actual command used to start the trial
+    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("TrialCommand")
+end
+
+-- Function to check if the trial is active
+local function isTrialActive()
+    -- Replace 'TrialActiveCheck' with the actual way to check if the trial is active
+    return game:GetService("ReplicatedStorage"):WaitForChild("TrialActiveCheck").Value
+end
+
+-- Function to kill a player
+local function killPlayer(player)
+    -- Replace 'KillCommand' with the actual command or method to kill a player
+    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer("KillCommand", player)
+end
+
+-- Main loop to handle the trial process
+while true do
+    if not isTrialActive() then
+        startTrial()
+        wait(5) -- Wait for 5 seconds to ensure the trial starts
+    end
+    wait(10) -- Wait for 10 seconds before checking again
+end
+
+-- Loop to kill players
+while true do
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player ~= game.Players.LocalPlayer then
+            killPlayer(player)
+            wait(1) -- Wait for 1 second between kills to avoid lag
+        end
+    end
+    wait(5) -- Wait for 5 seconds before killing players
+    if players There isn't stop
+end
